@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="consumer" />
         <module name="service1" />
         <module name="testEureka" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="consumer" target="1.8" />
       <module name="service1" target="1.8" />
       <module name="testEureka" target="1.8" />
       <module name="testSpringCloud" target="1.8" />

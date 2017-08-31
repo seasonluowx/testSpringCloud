@@ -11,6 +11,7 @@
     <modules>
         <module>testEureka</module>
         <module>service1</module>
+        <module>consumer</module>
     </modules>
 
     <parent>

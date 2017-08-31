@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/consumer/consumer.iml" filepath="$PROJECT_DIR$/consumer/consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/service1/service1.iml" filepath="$PROJECT_DIR$/service1/service1.iml" />
       <module fileurl="file://$PROJECT_DIR$/testEureka/testEureka.iml" filepath="$PROJECT_DIR$/testEureka/testEureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/testSpringCloud.iml" filepath="$PROJECT_DIR$/testSpringCloud.iml" />
