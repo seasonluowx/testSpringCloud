@@ -22,13 +22,21 @@ public class HelloService {
 
     @HystrixCommand(fallbackMethod = "helloFallback")
     public String helloService(){
-        String body =  restTemplate.getForEntity("http://service1/hello",String.class).getBody();
+        String body =  restTemplate.getForEntity("http://SERVICE1/hello",String.class).getBody();
+        System.out.println("请求成功！"+body);
+        return body;
+    }
+
+    @HystrixCommand(fallbackMethod = "userinfoFallback")
+    public User userInfoServiceSync(Long id){
+        User body =  restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);;
+        System.out.println("请求成功！"+body.toString());
         return body;
     }
 
     @HystrixCollapser(batchMethod = "userInfoServiceAll",
-            collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="2000")})
-    public Future<User> userInfoService(final Long id){
+            collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="200")})
+    public Future<User> userInfoService(Long id){
         System.out.println("单个请求");
         return new AsyncResult<User>(){
             @Override
@@ -42,11 +50,11 @@ public class HelloService {
     public Future<User> userInfoServiceAll(List<Long> ids){
         System.out.println("合并请求");
         return new AsyncResult<User>(){
-            @Override
-            public User invoke(){
-                return restTemplate.getForObject("http://service1/userInfo?ids={1}",User.class, ids);
-            }
-        };
+                @Override
+                public User invoke(){
+                    return restTemplate.getForObject("http://service1/userInfo?ids={1}",User.class, ids);
+                }
+            };
     }
 
     @HystrixCommand(observableExecutionMode=ObservableExecutionMode.LAZY)
@@ -73,5 +81,10 @@ public class HelloService {
     public String helloFallback(Throwable e){
         e.printStackTrace();
         return "error2";
+    }
+
+    public User userinfoFallback(Long id,Throwable e){
+        e.printStackTrace();
+        return new User();
     }
 }
