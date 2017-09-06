@@ -12,6 +12,7 @@
         <module>testEureka</module>
         <module>service1</module>
         <module>consumer</module>
+        <module>HystrixDashboard</module>
     </modules>
 
     <parent>
