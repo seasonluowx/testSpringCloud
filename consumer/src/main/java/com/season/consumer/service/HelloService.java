@@ -33,7 +33,8 @@ public class HelloService {
         return new AsyncResult<User>(){
             @Override
             public User invoke(){
-                return restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+                User user =  restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+                return user;
             }
         };
     }

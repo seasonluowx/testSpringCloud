@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @RestController
 public class ConsumerController {
@@ -26,7 +27,8 @@ public class ConsumerController {
     @RequestMapping(value="/userinfo/{id}")
     public User Userinfo(@PathVariable("id") Long id){
         try {
-            return helloService.userInfoService(id).get();
+            Future future =  helloService.userInfoService(id);
+            return (User) future.get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
