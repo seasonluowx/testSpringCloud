@@ -6,6 +6,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.contrib.javanica.annotation.ObservableExecutionMode;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
 import com.season.consumer.entity.User;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,6 +25,20 @@ public class HelloService {
     public String helloService(){
         String body =  restTemplate.getForEntity("http://service1/hello",String.class).getBody();
         return body;
+    }
+
+    @HystrixCollapser(batchMethod = "userInfoServiceSyncAll",
+            collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="2000")})
+    public Future<User> userInfoServiceSync(Long id){
+        /*return new AsyncResult<User>(){
+            @Override
+            public User invoke(){
+                User user =  restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+                return user;
+            }
+        }.get();*/
+//        return restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+        return null;
     }
 
     @HystrixCollapser(batchMethod = "userInfoServiceAll",
@@ -50,6 +65,19 @@ public class HelloService {
         };
     }
 
+    @HystrixCommand
+    public List<User> userInfoServiceSyncAll(List<Long> ids){
+        System.out.println("合并请求");
+        /*return (List<User>) new AsyncResult<User>(){
+            @Override
+            public User invoke(){
+                return restTemplate.getForObject("http://service1/userInfo?ids={1}",List.class, ids);
+            }
+        }.get();*/
+        List<User> users =  restTemplate.getForObject("http://service1/userInfo?ids={1}",List.class, StringUtils.join(ids,","));
+        return users;
+    }
+
     @HystrixCommand(observableExecutionMode=ObservableExecutionMode.LAZY)
     public Observable<User> userInfoServiceObserv(final Long id){
         return Observable.create(new Observable.OnSubscribe<User>() {
@@ -67,9 +95,6 @@ public class HelloService {
             }
         });
     }
-
-
-
 
     public String helloFallback(Throwable e){
         e.printStackTrace();

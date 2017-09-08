@@ -5,8 +5,10 @@ import com.season.consumer.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -27,7 +29,7 @@ public class ConsumerController {
     @RequestMapping(value="/userinfo/{id}")
     public User Userinfo(@PathVariable("id") Long id){
         try {
-            Future future =  helloService.userInfoService(id);
+            Future future =  helloService.userInfoServiceSync(id);
             return (User) future.get();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -35,5 +37,11 @@ public class ConsumerController {
             e.printStackTrace();
         }
         return null;
+//        return helloService.userInfoServiceSync(id).get();
+    }
+
+    @RequestMapping(value="/userinfo")
+    public List<User> UserinfoAll(@RequestParam("ids") List<Long> ids){
+        return helloService.userInfoServiceSyncAll(ids);
     }
 }
