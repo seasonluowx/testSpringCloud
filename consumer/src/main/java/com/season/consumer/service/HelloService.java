@@ -6,6 +6,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.netflix.hystrix.contrib.javanica.annotation.ObservableExecutionMode;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
 import com.season.consumer.entity.User;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -34,6 +35,20 @@ public class HelloService {
         return body;
     }
 
+    @HystrixCollapser(batchMethod = "userInfoServiceSyncAll",
+            collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="2000")})
+    public Future<User> userInfoServiceSync(Long id){
+        /*return new AsyncResult<User>(){
+            @Override
+            public User invoke(){
+                User user =  restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+                return user;
+            }
+        }.get();*/
+//        return restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+        return null;
+    }
+
     @HystrixCollapser(batchMethod = "userInfoServiceAll",
             collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="200")})
     public Future<User> userInfoService(Long id){
@@ -41,7 +56,8 @@ public class HelloService {
         return new AsyncResult<User>(){
             @Override
             public User invoke(){
-                return restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+                User user =  restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
+                return user;
             }
         };
     }
@@ -55,6 +71,19 @@ public class HelloService {
                     return restTemplate.getForObject("http://service1/userInfo?ids={1}",User.class, ids);
                 }
             };
+    }
+
+    @HystrixCommand
+    public List<User> userInfoServiceSyncAll(List<Long> ids){
+        System.out.println("合并请求");
+        /*return (List<User>) new AsyncResult<User>(){
+            @Override
+            public User invoke(){
+                return restTemplate.getForObject("http://service1/userInfo?ids={1}",List.class, ids);
+            }
+        }.get();*/
+        List<User> users =  restTemplate.getForObject("http://service1/userInfo?ids={1}",List.class, StringUtils.join(ids,","));
+        return users;
     }
 
     @HystrixCommand(observableExecutionMode=ObservableExecutionMode.LAZY)
@@ -74,9 +103,6 @@ public class HelloService {
             }
         });
     }
-
-
-
 
     public String helloFallback(Throwable e){
         e.printStackTrace();
