@@ -9,6 +9,9 @@ public class User implements Serializable{
     private String nickname;
     private String icon;
 
+    public User(){
+
+    }
     public User(Long id,String nickname){
         this.id = id;
         this.nickname = nickname;

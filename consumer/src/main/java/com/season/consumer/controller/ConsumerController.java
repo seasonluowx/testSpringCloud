@@ -43,8 +43,7 @@ public class ConsumerController {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }*/
-        }
-        return null;
+//        return null;
 //        return helloService.userInfoServiceSync(id).get();
     }
 

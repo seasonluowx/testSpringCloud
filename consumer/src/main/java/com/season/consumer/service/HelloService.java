@@ -35,19 +35,19 @@ public class HelloService {
         return body;
     }
 
-    @HystrixCollapser(batchMethod = "userInfoServiceSyncAll",
+    /*@HystrixCollapser(batchMethod = "userInfoServiceSyncAll",
             collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="2000")})
     public Future<User> userInfoServiceSync(Long id){
-        /*return new AsyncResult<User>(){
+        *//*return new AsyncResult<User>(){
             @Override
             public User invoke(){
                 User user =  restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
                 return user;
             }
-        }.get();*/
+        }.get();*//*
 //        return restTemplate.getForObject("http://service1/userInfo/{1}",User.class, id);
         return null;
-    }
+    }*/
 
     @HystrixCollapser(batchMethod = "userInfoServiceAll",
             collapserProperties = {@HystrixProperty(name="timerDelayInMilliseconds",value="200")})
