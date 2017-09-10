@@ -15,6 +15,7 @@
         <module>consumer</module>
         <module>HystrixDashboard</module>
         <module>turbine</module>
+        <module>apigateway</module>
     </modules>
 
     <parent>

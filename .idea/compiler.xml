@@ -6,17 +6,25 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="apigateway" />
         <module name="consumer" />
         <module name="HystrixDashboard" />
+        <module name="server-api" />
+        <module name="server1" />
         <module name="service1" />
+        <module name="serviceapi" />
         <module name="testEureka" />
         <module name="turbine" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="apigateway" target="1.8" />
       <module name="consumer" target="1.8" />
       <module name="HystrixDashboard" target="1.8" />
+      <module name="server-api" target="1.8" />
+      <module name="server1" target="1.8" />
       <module name="service1" target="1.8" />
+      <module name="serviceapi" target="1.8" />
       <module name="testEureka" target="1.8" />
       <module name="testSpringCloud" target="1.8" />
       <module name="turbine" target="1.8" />

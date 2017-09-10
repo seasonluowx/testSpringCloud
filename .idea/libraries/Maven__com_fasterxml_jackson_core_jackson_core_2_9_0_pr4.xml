@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.0.pr4">
     <CLASSES>
-      <root url="jar://D:/repository-cloud/com/fasterxml/jackson/core/jackson-core/2.9.0.pr4/jackson-core-2.9.0.pr4.jar!/" />
+      <root url="jar://D:/repository-springcloud/com/fasterxml/jackson/core/jackson-core/2.9.0.pr4/jackson-core-2.9.0.pr4.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://D:/repository-cloud/com/fasterxml/jackson/core/jackson-core/2.9.0.pr4/jackson-core-2.9.0.pr4-javadoc.jar!/" />
+      <root url="jar://D:/repository-springcloud/com/fasterxml/jackson/core/jackson-core/2.9.0.pr4/jackson-core-2.9.0.pr4-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://D:/repository-cloud/com/fasterxml/jackson/core/jackson-core/2.9.0.pr4/jackson-core-2.9.0.pr4-sources.jar!/" />
+      <root url="jar://D:/repository-springcloud/com/fasterxml/jackson/core/jackson-core/2.9.0.pr4/jackson-core-2.9.0.pr4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

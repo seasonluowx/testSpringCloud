@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HystrixDashboard/HystrixDashboard.iml" filepath="$PROJECT_DIR$/HystrixDashboard/HystrixDashboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apigateway/apigateway.iml" filepath="$PROJECT_DIR$/apigateway/apigateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/consumer/consumer.iml" filepath="$PROJECT_DIR$/consumer/consumer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/service1/service1.iml" filepath="$PROJECT_DIR$/service1/service1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server-api/serviceapi.iml" filepath="$PROJECT_DIR$/server-api/serviceapi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server1/server1.iml" filepath="$PROJECT_DIR$/server1/server1.iml" />
       <module fileurl="file://$PROJECT_DIR$/testEureka/testEureka.iml" filepath="$PROJECT_DIR$/testEureka/testEureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/testSpringCloud.iml" filepath="$PROJECT_DIR$/testSpringCloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/turbine/turbine.iml" filepath="$PROJECT_DIR$/turbine/turbine.iml" />
     </modules>
   </component>
 </project>
