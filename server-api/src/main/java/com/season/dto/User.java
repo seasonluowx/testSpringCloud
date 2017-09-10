@@ -1,4 +1,4 @@
-package com.season.service.entity;
+package com.season.dto;
 
 import java.io.Serializable;
 
@@ -8,6 +8,10 @@ public class User implements Serializable{
     private String accountname;
     private String nickname;
     private String icon;
+
+    public User(){
+
+    }
 
     public User(Long id,String nickname){
         this.id = id;
