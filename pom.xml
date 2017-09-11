@@ -17,6 +17,7 @@
         <module>turbine</module>
         <module>apigateway</module>
         <module>configserver</module>
+        <module>configClient</module>
     </modules>
 
     <parent>

@@ -2,6 +2,9 @@ package com.season.consumer.controller;
 
 import com.season.consumer.refactorService.RefactorHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RefreshScope
+@Configuration
 @RestController
 public class ConsumerController {
     @Autowired
@@ -16,8 +21,15 @@ public class ConsumerController {
     /*@Autowired
     RestTemplate restTemplate;*/
 
+    @Value("${testconfigenv}")
+    private String testconfigenv;
+
+/*    @Autowired
+    private Environment env;*/
+
     @RequestMapping(value="/helloConsumer")
     public String helloConsumer(){
+        System.out.println("我获取到的testconfigenv配置是"+testconfigenv);
         return refactorHelloService.say();
         /*String body =  restTemplate.getForEntity("http://service1/hello",String.class).getBody();
         return body;*/
