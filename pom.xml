@@ -16,6 +16,7 @@
         <module>HystrixDashboard</module>
         <module>turbine</module>
         <module>apigateway</module>
+        <module>configserver</module>
     </modules>
 
     <parent>
