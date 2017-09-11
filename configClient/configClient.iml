@@ -48,6 +48,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.0.0.RC3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.0.0.RC3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.0.0.M3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-actuator:2.0.0.M3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter-config:2.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-starter:2.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:2.0.0.M2" level="project" />
