@@ -18,6 +18,8 @@
         <module>apigateway</module>
         <module>configClient</module>
         <module>configServer</module>
+        <module>testRabbitmq</module>
+        <module>streamhello</module>
     </modules>
 
     <parent>
