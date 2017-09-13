@@ -49,4 +49,9 @@ public class User implements Serializable{
     public void setIcon(String icon) {
         this.icon = icon;
     }
+
+    @Override
+    public String toString() {
+        return "id:"+this.id+"accountname:"+this.accountname+"nickname:"+this.nickname+"icon:"+this.icon;
+    }
 }
