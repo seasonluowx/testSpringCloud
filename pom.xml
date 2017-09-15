@@ -19,7 +19,8 @@
         <module>configClient</module>
         <module>configServer</module>
         <module>testRabbitmq</module>
-        <module>streamhello</module>
+        <module>streamProducer</module>
+        <module>streamConsumer</module>
     </modules>
 
     <parent>

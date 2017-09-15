@@ -9,16 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>stream-hello</artifactId>
+    <artifactId>streamConsumer</artifactId>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -47,7 +42,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.season.streamrabbit.Application</mainClass>
+                            <mainClass>com.season.streamrabbit.ConsumerApplication</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>.</Class-Path>
@@ -75,4 +70,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
